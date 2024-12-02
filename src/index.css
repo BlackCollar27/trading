@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-neutral-900 text-neutral-50 font-sans min-h-screen;
+    background: radial-gradient(circle at 50% 50%, rgba(23, 23, 23, 0.5), rgba(13, 13, 13, 0.95) 100%);
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-neutral-800/80 backdrop-blur-sm border border-neutral-700/10 rounded-xl;
+    box-shadow: 0 8px 32px 0 rgba(13, 13, 13, 0.37);
+  }
+
+  .glass-panel-hover {
+    @apply transition-all duration-300 hover:bg-neutral-700/80 hover:border-neutral-600/20;
+  }
+
+  .nav-link {
+    @apply px-4 py-2 text-sm uppercase tracking-wider hover:text-neutral-50 transition-colors font-mono relative
+    after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-neutral-100 after:to-neutral-200
+    after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  .metric-card {
+    @apply glass-panel glass-panel-hover p-4;
+  }
+
+  .status-badge {
+    @apply px-3 py-1 text-xs uppercase tracking-wider font-mono rounded-full;
+  }
+
+  .modal-content {
+    @apply glass-panel p-6;
+  }
+
+  .input-field {
+    @apply bg-neutral-700/80 border-neutral-600/10 text-neutral-50 rounded-xl focus:border-neutral-500/50 focus:ring-neutral-500/50 font-mono;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-neutral-100 to-neutral-200 hover:from-neutral-100/90 hover:to-neutral-200/90 text-neutral-900 rounded-xl font-mono
+    transition-all duration-300 shadow-lg shadow-neutral-900/25;
+  }
+
+  .btn-secondary {
+    @apply glass-panel glass-panel-hover text-neutral-50 rounded-xl font-mono;
+  }
+
+  .logo-text {
+    @apply font-mono font-bold tracking-[0.2em] uppercase;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-neutral-50 to-neutral-100 text-transparent bg-clip-text;
+  }
+
+  .gradient-bg {
+    background: radial-gradient(circle at 50% 0%, rgba(82, 82, 82, 0.15), transparent 60%),
+                radial-gradient(circle at 100% 0%, rgba(39, 39, 39, 0.15), transparent 40%);
+  }
+
+  .section-title {
+    @apply text-4xl font-bold mb-8 gradient-text;
+  }
+
+  .card-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6;
+  }
+
+  .feature-number {
+    @apply text-6xl font-bold opacity-10 absolute bottom-4 right-4;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.2s ease-out forwards;
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 640px) {
+  .glass-panel {
+    @apply rounded-lg;
+  }
+
+  .nav-link {
+    @apply px-2 py-1 text-xs;
+  }
+
+  .status-badge {
+    @apply px-2 py-0.5 text-xs;
+  }
+
+  .btn-primary, .btn-secondary {
+    @apply px-3 py-1.5 text-sm;
+  }
+
+  .section-title {
+    @apply text-2xl mb-4;
+  }
+
+  .card-grid {
+    @apply gap-3;
+  }
+}
